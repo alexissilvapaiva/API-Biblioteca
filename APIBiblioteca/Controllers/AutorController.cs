@@ -27,6 +27,18 @@ namespace APIBiblioteca.Controllers
             return Ok(autoresDTO);
         }
 
+        [HttpGet("{id}", Name ="GetAutor")]
+        public async Task<ActionResult<AutorDTO>> Obtener(int id)
+        {
+            var autor = await _repository.Obtener(id);
+            if(autor == null)
+            {
+                return NotFound();
+            }
+            var autorDTO = _mapper.Map<AutorDTO>(autor);
+            return Ok(autorDTO);
+        }
+
         [HttpPost]
         public async Task<ActionResult>Crear(AutorCreacionDTO autorCreacionDTO)
         {

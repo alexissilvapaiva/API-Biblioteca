@@ -15,7 +15,7 @@ namespace APIBiblioteca.DAL.Implementar
 
         public async Task<T> Obtener(int id)
         {
-            return await _context.Set<T>().FindAsync();              
+            return await _context.Set<T>().FindAsync(id);              
         }
 
         public async Task<IEnumerable<T>> ObtenerTodos()
