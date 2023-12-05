@@ -16,6 +16,10 @@ namespace APIBiblioteca.Utilidades
             CreateMap<Autor, AutorDTO>()
                 .ForMember(d => d.FechaNacimiento,
                 opt => opt.MapFrom(o => o.FechaNacimiento.ToString("dd/MM/yyyy")));
+
+
+            //al tener las mismas propiedas y nombres que las entidades no causa error
+            CreateMap<Genero, GeneroDTO>();
         }
     }
 }

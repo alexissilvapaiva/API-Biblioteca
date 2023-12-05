@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using APIBiblioteca.DAL.Interfaces;
+using APIBiblioteca.DTO;
+using APIBiblioteca.Models;
+using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace APIBiblioteca.Controllers
@@ -10,10 +14,18 @@ namespace APIBiblioteca.Controllers
         private readonly IGenericRepository<Autor> _repository;
         private readonly IMapper _mapper;
 
-        public AutorController(IGenericRepository<Autor> repository, IMapper mapper)
+        public GeneroController(IGenericRepository<Autor> repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<GeneroDTO>>> ObtenerTodos()
+        {
+            var generos = await _repository.ObtenerTodos();
+            var generosDTO = _mapper.Map<IEnumerable<GeneroDTO>>(generos);
+            return Ok(generosDTO);
         }
 
     }
