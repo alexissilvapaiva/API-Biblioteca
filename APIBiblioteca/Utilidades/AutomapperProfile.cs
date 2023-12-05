@@ -35,6 +35,8 @@ namespace APIBiblioteca.Utilidades
                 .ForMember(d => d.Autor, o => o.Ignore())
                 .ForMember(d => d.Genero, o => o.Ignore());
 
+
+            CreateMap<Comentario, ComentarioDTO>().ReverseMap();
         }
     }
 }
