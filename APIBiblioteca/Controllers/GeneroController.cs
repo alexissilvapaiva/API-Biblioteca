@@ -7,5 +7,14 @@ namespace APIBiblioteca.Controllers
     [ApiController]
     public class GeneroController : ControllerBase
     {
+        private readonly IGenericRepository<Autor> _repository;
+        private readonly IMapper _mapper;
+
+        public AutorController(IGenericRepository<Autor> repository, IMapper mapper)
+        {
+            _repository = repository;
+            _mapper = mapper;
+        }
+
     }
 }
