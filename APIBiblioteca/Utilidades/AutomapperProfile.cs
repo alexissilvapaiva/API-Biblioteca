@@ -18,8 +18,9 @@ namespace APIBiblioteca.Utilidades
                 opt => opt.MapFrom(o => o.FechaNacimiento.ToString("dd/MM/yyyy")));
 
 
-            //al tener las mismas propiedas y nombres que las entidades no causa error
+            //al tener las mismas propiedades y nombres que las entidades no causa error
             CreateMap<Genero, GeneroDTO>();
+            CreateMap<GeneroCreacionDTO, Genero>().ReverseMap();
         }
     }
 }
