@@ -53,5 +53,33 @@ namespace APIBiblioteca.Controllers
             var dto = _mapper.Map<AutorCreacionDTO>(autor);
             return Ok(dto);
         }
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Actualizar(int id, AutorCreacionDTO autorCreacionDTO)
+        {
+            var autorDesdeRepo = await _repository.Obtener(id);
+            if (autorDesdeRepo == null)
+                return NotFound();
+            _mapper.Map(autorCreacionDTO, autorDesdeRepo);
+            var resultado = await _repository.Actualizar(autorDesdeRepo);
+            if (resultado)
+                return NoContent();
+
+            return BadRequest();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult>Eliminar(int id)
+        {
+            var autorDesdeRepo = await _repository.Obtener(id);
+            if (autorDesdeRepo == null)
+                return NotFound();
+
+            var resultado = await _repository.Eliminar(id);
+
+            if (resultado)
+                return NoContent();
+
+            return BadRequest();
+        }
     }
 }
