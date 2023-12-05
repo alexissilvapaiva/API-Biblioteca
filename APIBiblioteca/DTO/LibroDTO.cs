@@ -10,7 +10,7 @@ namespace APIBiblioteca.DTO
 
         public bool ParaPrestar { get; set; }
 
-        public DateTime FechaLanzamiento { get; set; }
+        public string FechaLanzamiento { get; set; }
 
         public string NombreAutor {  get; set; }
         public string NombreGenero {  get; set; }
